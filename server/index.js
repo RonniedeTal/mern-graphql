@@ -22,12 +22,17 @@ schema,
 graphiql: process.env.NODE_ENV === 'development'
 }))
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-  app.get(/^\/(?!graphql).*/, (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+  app.get('*', (req, res) => {
+    if (req.path.startsWith('/graphql')) {
+    return res.status(404).json({ error: 'Not found' });
+  }
+
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
-}
+
 
 
 app.listen(port, () => {
