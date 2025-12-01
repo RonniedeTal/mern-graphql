@@ -25,7 +25,7 @@ graphiql: process.env.NODE_ENV === 'production'
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-  app.get( (req, res) => {
+  app.use( (req, res, next) => {
      if (req.path.startsWith('/graphql')) return next();
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
