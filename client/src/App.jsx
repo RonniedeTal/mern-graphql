@@ -29,7 +29,11 @@ const httpLink = new HttpLink({
 
 
 const client = new ApolloClient({
-   link: httpLink, 
+   link: new httpLink({
+    uri: import.meta.env.DEV
+      ? "/graphql" // 🚀 Proxy de Vite en desarrollo
+      : import.meta.env.VITE_API_URL, // 🌐 Producción
+   }), 
   cache,
 });
 
