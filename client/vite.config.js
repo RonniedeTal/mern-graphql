@@ -6,10 +6,14 @@ export default defineConfig({
   plugins: [react()],
    server: {
     proxy: {
-      '/graphql': 'http://localhost:5000'
+      '/graphql': {
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      }
     }
   },
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+    sourcemap: false
   }
 })
