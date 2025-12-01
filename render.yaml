@@ -10,5 +10,5 @@ services:
         value: production
       - key: MONGO_URI
         sync: false  # Lo configurarás manualmente
-      - key: PORT
-        value: 10000
+      - key: VITE_API_URL
+        value: https://mern-graphql-1bb4.onrender.com/graphql
