@@ -23,7 +23,10 @@ const cache = new InMemoryCache({
 })
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:5000/graphql"
+  uri:
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000/graphql"
+      : "https://mern-graphql-1bb4.onrender.com/graphql"
 });
 
 const client = new ApolloClient({
