@@ -152,3 +152,11 @@ export default App;
 - Relationship between clients and projects
 - Backend with GraphQL and Apollo Server
 - Frontend with React and Apollo Client
+
+---
+
+## 🚀 Deployment
+
+The application is deployed on Render and is available at the following link:
+
+[https://mern-graphql-1bb4.onrender.com/](https://mern-graphql-1bb4.onrender.com/)
