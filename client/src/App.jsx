@@ -24,7 +24,7 @@ const cache = new InMemoryCache({
 
 const httpLink = new HttpLink({
   uri:
-    import.meta.env.MODE === "development"
+    import.meta.env.MODE === "production"
       ? "http://localhost:5000/graphql"
       : "https://mern-graphql-1bb4.onrender.com/graphql"
 });
