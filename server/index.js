@@ -25,11 +25,8 @@ graphiql: process.env.NODE_ENV === 'development'
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-  app.get('*', (req, res) => {
-    if (req.path.startsWith('/graphql')) {
-    return res.status(404).json({ error: 'Not found' });
-  }
-
+  app.get( (req, res) => {
+     if (req.path.startsWith('/graphql')) return next();
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
