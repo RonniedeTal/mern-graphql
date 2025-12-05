@@ -23,17 +23,13 @@ const cache = new InMemoryCache({
 })
 
 const httpLink = new HttpLink({
-   uri: import.meta.env.VITE_API_URL
+   uri: import.meta.env.production.VITE_API_URL
       
 });
 
 
 const client = new ApolloClient({
-   link: new httpLink({
-    uri: import.meta.env.DEV
-      ? "/graphql" // 🚀 Proxy de Vite en desarrollo
-      : import.meta.env.VITE_API_URL, // 🌐 Producción
-   }), 
+   link: httpLink, 
   cache,
 });
 
