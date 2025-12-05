@@ -28,7 +28,7 @@ app.use('/graphql', graphqlHTTP({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Fallback para React Router (cualquier ruta que no sea /graphql ni archivos estáticos)
-app.get('*', (req, res) => {
+app.get(/^\/(?!graphql).*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
