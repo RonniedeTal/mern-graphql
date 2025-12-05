@@ -23,7 +23,7 @@ const cache = new InMemoryCache({
 })
 
 const httpLink = new HttpLink({
-   uri: import.meta.env.production.VITE_API_URL
+   uri: import.meta.env.VITE_API_URL
       
 });
 
