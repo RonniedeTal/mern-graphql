@@ -1,11 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig(({ mode }) => {
-  // Forzar modo producción cuando se construye para deploy
   const isProduction = mode === 'production' || process.env.NODE_ENV === 'production'
-  
+
   return {
     plugins: [react()],
     server: {
@@ -17,23 +15,21 @@ export default defineConfig(({ mode }) => {
       }
     },
     build: {
-      outDir: '../server/public',
+      outDir: '../server/public', // React build va al backend
       emptyOutDir: true,
       sourcemap: false,
-      // Configuración específica para producción
       minify: 'terser',
       terserOptions: {
         compress: {
-          drop_console: true, // Eliminar console.log en producción
+          drop_console: true
         }
       }
     },
-    // Esto es clave: definir las variables de entorno en el build
+    // ⚡ Production: usar variables de entorno de Render
     define: {
-      // Solo si necesitas forzar la URL en producción
-      ...(isProduction ? {
-        'import.meta.env.VITE_API_URL': JSON.stringify('https://mern-graphql-1bb4.onrender.com/graphql')
-      } : {})
+      'import.meta.env.VITE_API_URL': JSON.stringify(
+        process.env.VITE_API_URL || 'http://localhost:5000/graphql'
+      )
     }
   }
 })
