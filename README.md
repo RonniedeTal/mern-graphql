@@ -159,4 +159,4 @@ export default App;
 
 The application is deployed on Render and is available at the following link:
 
-[https://mern-graphql-1bb4.onrender.com/](https://mern-graphql-1bb4.onrender.com/)
+[https://mern-graphql-x8jp.onrender.com/](https://mern-graphql-x8jp.onrender.com/)
